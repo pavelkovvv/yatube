@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Технологии{% endblock %}
+{% block content %}
+{% comment %} Колонки с отступом сверху и снизу {% endcomment %}
+<div class="row">
+  <h1>Technologies</h1>
+  {% comment %}
+    Боковой блок со списком технологий 
+    Займет всю ширину блока на мобильном
+    и 25% при размерах экрана ≥768px
+  {% endcomment %}
+  <aside class="col-12 col-md-3">
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item">
+        <img src="{% static 'img/tech/Python.svg' %}"
+      </li>
+      <li class="list-group-item">
+        <img src="{% static 'img/tech/Django.svg' %}"
+      </li>
+      <li class="list-group-item">
+        <img src="{% static 'img/tech/Postgres.svg' %}"
+      </li>
+      <li class="list-group-item">
+        <img src="{% static 'img/tech/Docker.svg' %}"
+      </li>
+      <li class="list-group-item">
+        <img src="{% static 'img/tech/NGINX.svg' %}"
+      </li>
+      <li class="list-group-item">
+        <img src="{% static 'img/tech/Gunicorn.svg' %}"
+      </li>
+    </ul>
+  </aside>
+  <article class="col-12 col-md-9">
+    <p>На данном этапе обучения в проекте использовались только 3 первые технологии из перечисленных, а именно
+        Python, Django и MySQL. В дальнейшем планируется контейнеризация проекта, написание API и создание HTTP-
+        шлюзового интерфейса веб-сервера Python с помощью Gunicorn.</p>
+  </article>
+</div>
+{% endblock %} 

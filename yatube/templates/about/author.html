@@ -1,0 +1,92 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}
+  Автор
+{% endblock %}
+{% block style %}
+  <style>
+    img {
+        max-width: 70%;
+        max-height: 60%;
+      }
+    h1 {
+        font-size: 50px;
+        margin-top: 30px;
+        margin-bottom: 20px;
+      }
+    p {
+        font-size: 18px;
+      }
+    h2 {
+        margin-top: 30px;
+        margin-bottom: 20px;
+      }
+  </style>
+{% endblock style %}    
+{% block content %}
+  <div class="row">
+    <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+      <p>Я закончил школу в 2019 году с красным аттестатом. После школы поступил в СПбГУАП на направление "Электроника и наноэлектроника".
+         В процессе обучения осваивал Python и меня затянуло. Решил связать с этим своё будущее и начал разбираться в области backend-разработки.
+         Поступил на программу обучения "Python-разработчик" в Яндекс.Практикум. Данный сайт является первым полноценным проектом на Django.</p>
+      <p> На протяжении всего обучения мне помогают и мотивируют моя девушка и семья, люблю вас ❤</p>
+      <p> Желаю всем успехов, терпения, удачи и самое главное - здоровья🤜🤛</p>
+    </div>
+    <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
+      <img src="{% static 'img/myPhoto.png' %}" >
+    </div>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <h2>Github</h2>
+        <p><a href="https://github.com/pavelkovvv" target="_blank">Ссылка на Github</a></p>
+        <p><a href="">Резюме (когда оно будет, эта ссылочка станет активна)</a></p>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="row">
+  <div class="container" >
+    <div class="row">
+      <div class="col-12">
+        <h2>Мои проекты и курсовые работы</h2>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4">
+        <p><a href="https://github.com/pavelkovvv/hw_python_oop" target="_blank">Модуль фитнес-трекера</a></p>
+        <p><a href="https://disk.yandex.ru/i/4m_jgQogiguJdg" target="_blank">Разработка программы поиска решения СЛУ</a></p>
+      </div>
+      <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4">
+        <p><a href="https://disk.yandex.ru/i/yKcfP5V5qS5Ehw" target="_blank">Разработка селектора импульсов минимальной длительности</a></p>
+        <p><a href="https://disk.yandex.ru/i/9IK1OFluqYtQdw" target="_blank">Разработка активного фильтра на операционных усилителях</a></p>
+      </div>
+      <div class="col-12 col-sm-12 col-md-6 col-lg-4 col-xl-4">
+        <p><a href="https://disk.yandex.ru/i/cO_HMo8VaIaZrQ" target="_blank">Разработка контроллера "мыши" на платформе Arduino с использованием аналогового стика</a></p>
+        <p><a href="https://disk.yandex.ru/i/rcCzregT9AsvRQ" target="_blank">Разработка цифрового фильтра с фиксированными параметрами</a></p>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <h2>Контакты для связи</h2>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <p>Телефон: +7 (923) 567-18-96</p>
+        <p>Почта: <a href="mailto: pavelkovvv@yandex.com" target="_blank">pavelkovvv@yandex.com</a></p>
+        <p>VK: <a href="https://vk.com/pavelkovvv" target="_blank">@pavelkovvv</a></p>
+        <p>Телеграм: <a href="http://t.me/pavelkovvv" target="_blank">@pavelkovvv</a></p>
+        <p>Instagram: <a href="https://instagram.com/pavelkovv_?igshid=YmMyMTA2M2Y=" target="_blank">pavelkovv_</a></p>
+        <p>Discord: <a href="https://discordapp.com/users/420915974150160388/" target="_blank">jR.</a></p>
+      </div>
+    </div>
+  </div>
+{% endblock %} 
