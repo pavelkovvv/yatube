@@ -37,6 +37,8 @@
         <a href="{% url 'posts:post_detail' post.pk %}">
           подробная информация о посте
         </a>
+        ㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤКомментариев: {{ post.comments.count }}
+
       </p>    
       {% if post.group %}   
         <a href="{% url 'posts:group_list' post.group.slug %}"

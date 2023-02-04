@@ -101,6 +101,9 @@
             {% if comment.author == request.user %}
             <a class="red" href="{% url 'posts:delete_comment' post.pk comment.pk %}">
               Удалить комментарий    
+            {% elif request.user == post.author %}
+            <a class="red" href="{% url 'posts:delete_comment' post.pk comment.pk %}">
+              Удалить комментарий
             {% endif %}
             </a>
             <a class="answer" href="{% url 'posts:answer_to_comment' post.pk comment.pk %}">

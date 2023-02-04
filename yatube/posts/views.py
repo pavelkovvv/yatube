@@ -157,6 +157,7 @@ def answer_to_comment(request, post_id, comment_id):
 @login_required
 def delete_comment(request, post_id, comment_id):
     comment = Comment.objects.get(pk=comment_id)
-    if request.user == comment.author:
+    post = Post.objects.get(pk=post_id)
+    if request.user == comment.author or post.author == request.user:
         comment.delete()
     return redirect('posts:post_detail', post_id)
