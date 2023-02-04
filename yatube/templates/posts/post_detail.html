@@ -1,4 +1,8 @@
 {% extends 'base.html' %}
+{% block style %}
+<style>
+</style>
+{% endblock style %}
 {% load thumbnail %}
 {% load user_filters %}
 {% block title %}
@@ -80,6 +84,9 @@
           <p>
             {{ comment.text }}
           </p>
+          <p align="right">{{ comment.pub_date|date:"d E Y H:m:s " }} <a href="{% url 'posts:answer_to_comment' post.pk comment.pk %}">
+            <p align="right" style="font-size: 18px;">  Ответить </p></p>
+          </a>
         </div>
       </div>
     {% endfor %} 

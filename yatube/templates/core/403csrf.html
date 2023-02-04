@@ -1,4 +1,26 @@
 {% extends "base.html" %}
+{% block title %}403 Forbidden{% endblock title %}
+{% block style %}
+<style>
+  body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      background-color: #f2f2f2;
+  }
+  h1 {
+      font-size: 50px;
+      color: #cc0000;
+      margin-top: 50px;
+  }
+  p {
+      font-size: 20px;
+      color: #333;
+      margin-top: 20px;
+  }
+</style>
+{% endblock style %}
 {% block content %}
-  <h1>Custom CSRF check error. 403</h1>
+<h1>403 Forbidden</h1>
+<p>Ошибка CSRF: запрос был заблокирован из-за отсутствия или недопустимого токена CSRF.</p>
+<a href="{% url 'posts:index' %}">Переходите на главную</a>
 {% endblock %}

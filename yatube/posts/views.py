@@ -1,18 +1,23 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required
-from django.views.decorators.cache import cache_page
+
 from .models import Post, Group, Comment, Follow, User
 from .forms import PostForm, CommentForm
-from .utils import paginator
+from .utils import paginator, cache_index_first_page
+
+NAME_TO_COMMENT = None
 
 
-@cache_page(20, key_prefix="index_page")
 def index(request):
     template = 'posts/index.html'
-    post_list = Post.objects.all()
+    post_list = (Post.objects.select_related('group', 'author')
+                 .prefetch_related('comments').all())
+    page = cache_index_first_page(request, post_list)
+
     context = {
-        'page_obj': paginator(request, post_list),
+        'page_obj': page,
     }
+
     return render(request, template, context)
 
 
@@ -103,6 +108,8 @@ def add_comment(request, post_id):
         comment = form.save(commit=False)
         comment.author = request.user
         comment.post = post
+        if name is not None:
+            comment.text = name
         comment.save()
     return redirect('posts:post_detail', post_id=post_id)
 
@@ -135,3 +142,10 @@ def profile_unfollow(request, username):
     if users_follow.exists():
         users_follow.delete()
     return redirect('posts:profile', username)
+
+
+@login_required
+def answer_to_comment(request, post_id, comment_id):
+    need_comment = Comment.objects.get(pk=comment_id)
+    NAME_TO_COMMENT = need_comment.author.username
+    return redirect('posts:add_comment', post_id)

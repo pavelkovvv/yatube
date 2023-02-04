@@ -1,7 +1,35 @@
 {% extends "base.html" %}
-{% block title %}Custom 404{% endblock title %}
+{% block title %}404 Error{% endblock title %}
+{% block style %}
+<style>
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f2f2f2;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 50px;
+}
+
+.text {
+  font-size: 36px;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.text2 {
+  font-size: 18px;
+  color: #555;
+}
+</style>
+{% endblock style %}
 {% block content %}
-  <h1>Custom 404</h1>
-  <p>Страницы с адресом {{ path }} не существует</p>
+  <div class="container">
+    <h1 class="text1">404 Error</h1>
+    <p class = "text2">Извините, страница, которую вы ищете, не может быть найдена.</p>
+  </div>
   <a href="{% url 'posts:index' %}">Переходите на главную</a>
 {% endblock %}

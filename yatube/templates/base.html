@@ -23,6 +23,11 @@
       {% endblock %}
     </title>
     {% block style %}
+    <style>
+      body {
+        background-color: #F8F8FF
+      }
+    </style>
     {% endblock style %}
   </head>
   <body>
@@ -35,7 +40,8 @@
         {% endblock %}
       </div>
     </main>
-    <footer class="border-top text-center py-3">
+  </body>
+    <footer class="border-top text-center py-3" style="background-color: #CCCCFF">
       {% include 'includes/footer.html' %}
     </footer>
   </body>

@@ -26,4 +26,9 @@ urlpatterns = [
         views.profile_unfollow,
         name='profile_unfollow'
     ),
+    path(
+        'posts/<int:post_id>/addcomment/<int:comment_id>',
+        views.answer_to_comment,
+        name='answer_to_comment'
+    )
 ]

@@ -5,7 +5,7 @@
 
 {% with request.resolver_match.view_name as view_name %}
 
-<nav class="navbar navbar-expand-lg navbar-light" style="background-color: lightskyblue" >
+<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #CCCCFF" >
   <a class="navbar-brand" href="{% url 'posts:index' %}">
     &nbsp;&nbsp;&nbsp;<img src="{% static 'img/logo.png' %}" width="30" height="30" class="d-inline-block align-top" alt="">
     <span style="color:red">Ya</span>tube
@@ -15,6 +15,33 @@
   </button>
   <div class="collapse navbar-collapse" id="collapsibleNavbar">
     <ul class="nav nav-pills ms-auto">
+    {% if view_name != 'posts:index' %}
+      {% if view_name != 'users:logout' %}
+        {% if view_name != 'users:signup' %}
+          {% if view_name != 'users:login' %}
+            {% if view_name != 'users:password_change_form' %}
+              {% if view_name != 'users:password_change_done' %}
+                {% if view_name != 'users:password_reset_form' %}
+                  {% if view_name != 'users:password_reset_done' %}
+                    {% if view_name != 'users:password_reset_confirm' %}
+                      {% if view_name != 'users:password_reset_complete' %}
+                      <li class="nav-item">
+                        <a class="nav-link"
+                         href="{% url 'posts:index' %}"
+                        >
+                        Вернуться к главной странице
+                        </a>
+                      </li>
+                      {% endif %}
+                    {% endif %}
+                  {% endif %}
+                {% endif %}
+              {% endif %}
+            {% endif %}
+          {% endif %}
+        {% endif %}
+      {% endif %}
+    {% endif %}
       <li class="nav-item"> 
         <a class="nav-link 
           {% if view_name  == 'about:author' %}
