@@ -152,3 +152,11 @@ def answer_to_comment(request, post_id, comment_id):
     global NAME_TO_COMMENT
     NAME_TO_COMMENT = f'@{need_comment.author.username}, '
     return redirect('posts:post_detail', post_id)
+
+
+@login_required
+def delete_comment(request, post_id, comment_id):
+    comment = Comment.objects.get(pk=comment_id)
+    if request.user == comment.author:
+        comment.delete()
+    return redirect('posts:post_detail', post_id)

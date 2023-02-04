@@ -1,6 +1,18 @@
 {% extends 'base.html' %}
 {% block style %}
 <style>
+  #raz { overflow: hidden; } 
+  #raz a:nth-of-type(1) { float: right; }
+  #raz a:nth-of-type(2) { float: right; }
+  .red {
+    color: red;
+  }
+  .answer {
+    text-decoration: none;
+  }
+  body {
+    background-color: #F8F8FF
+  }
 </style>
 {% endblock style %}
 {% load thumbnail %}
@@ -84,8 +96,16 @@
           <p>
             {{ comment.text }}
           </p>
-          <p align="right">{{ comment.pub_date|date:"d E Y H:m:s " }} <a href="{% url 'posts:answer_to_comment' post.pk comment.pk %}">
-            <p align="right" style="font-size: 18px;">  Ответить </p></p>
+          <p align="right">{{ comment.pub_date|date:"d E Y H:m:s " }}</p> 
+          <div id="raz">
+            {% if comment.author == request.user %}
+            <a class="red" href="{% url 'posts:delete_comment' post.pk comment.pk %}">
+              Удалить комментарий    
+            {% endif %}
+            </a>
+            <a class="answer" href="{% url 'posts:answer_to_comment' post.pk comment.pk %}">
+              Ответить пользователюㅤㅤㅤ</a>
+          </div>
           </a>
         </div>
       </div>
