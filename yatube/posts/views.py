@@ -50,9 +50,11 @@ def profile(request, username):
 
 def post_detail(request, post_id):
     template = 'posts/post_detail.html'
+    global NAME_TO_COMMENT
     post = get_object_or_404(Post, id=post_id)
     all_comments = Comment.objects.filter(post=post)
-    form = CommentForm()
+    form = CommentForm(initial={'text': NAME_TO_COMMENT})
+    NAME_TO_COMMENT = None
     context = {
         'post': post,
         'form': form,
@@ -103,13 +105,13 @@ def post_edit(request, post_id):
 @login_required
 def add_comment(request, post_id):
     post = get_object_or_404(Post, pk=post_id)
-    form = CommentForm(request.POST)
+    form = CommentForm(
+        request.POST,
+    )
     if form.is_valid():
         comment = form.save(commit=False)
         comment.author = request.user
         comment.post = post
-        if name is not None:
-            comment.text = name
         comment.save()
     return redirect('posts:post_detail', post_id=post_id)
 
@@ -147,5 +149,6 @@ def profile_unfollow(request, username):
 @login_required
 def answer_to_comment(request, post_id, comment_id):
     need_comment = Comment.objects.get(pk=comment_id)
-    NAME_TO_COMMENT = need_comment.author.username
-    return redirect('posts:add_comment', post_id)
+    global NAME_TO_COMMENT
+    NAME_TO_COMMENT = f'@{need_comment.author.username}, '
+    return redirect('posts:post_detail', post_id)
