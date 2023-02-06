@@ -89,3 +89,22 @@ class Follow(models.Model):
         related_name='following',
         verbose_name='Автор'
     )
+
+
+class Like(models.Model):
+    like = models.BooleanField(
+        'Лайк',
+        help_text='Если хотите - поставьте лайк'
+    )
+    post = models.ForeignKey(
+        Post,
+        on_delete=models.CASCADE,
+        related_name='like',
+        verbose_name='Пост'
+    )
+    comment = models.ForeignKey(
+        Comment,
+        on_delete=models.CASCADE,
+        related_name='like',
+        verbose_name='Комментарий'
+    )
